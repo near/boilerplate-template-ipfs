@@ -30,18 +30,23 @@
 <details open="open">
 <summary>Table of Contents</summary>
 
-- [About](#about)
-  - [Built With](#built-with)
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
 - [Usage](#usage)
-- [Roadmap](#roadmap)
-- [Support](#support)
-- [Project assistance](#project-assistance)
-- [Contributing](#contributing)
-- [Authors & contributors](#authors--contributors)
-- [Security](#security)
+- [Exploring The Code](#exploring-the-code)
+- [Deploy](#deploy)
+  - [Step 0: Install near-cli (optional)](#step-0-install-near-cli-optional)
+  - [Step 1: Create an account for the contract](#step-1-create-an-account-for-the-contract)
+  - [Step 2: deploy the contract](#step-2-deploy-the-contract)
+  - [Step 3: set contract name in your frontend code](#step-3-set-contract-name-in-your-frontend-code)
+- [Troubleshooting](#troubleshooting)
+  - [Roadmap](#roadmap)
+  - [Support](#support)
+  - [Project assistance](#project-assistance)
+  - [Contributing](#contributing)
+  - [Authors & contributors](#authors--contributors)
+  - [Security](#security)
 
 </details>
 
@@ -49,7 +54,7 @@
 
 ## About
 
-This project is created for easy-to-start as a React skeleton template in the Pagoda Gallery. It was initialized with [create-near-app]. Clone it and start to build your own gallery project!
+This project is created for easy-to-start as a React + IPFS skeleton template in the Pagoda Gallery. It was initialized with [create-near-app]. Clone it and start to build your own gallery project!
 
 ### Built With
 
@@ -71,6 +76,15 @@ Install all dependencies:
 
     npm install
 
+Install IPFS:
+
+    npm install -g ipfs
+
+Initialize IPFS daemon:
+
+    jsipfs init
+    jsipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '["http://localhost:5002", "http://localhost:3000", "http://127.0.0.1:5001", "https://webui.ipfs.io"]'
+    jsipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods '["PUT", "POST"]'
 
 Build your contract:
 
@@ -87,6 +101,10 @@ Usage
 Test your contract:
 
     npm test
+
+Start your IPFS daemon:
+
+    jsipfs daemon
 
 Start your frontend:
 
