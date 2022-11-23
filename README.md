@@ -83,7 +83,10 @@ Install IPFS:
 Initialize IPFS daemon:
 
     jsipfs init
-    jsipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '["http://localhost:5002", "http://localhost:3000", "http://127.0.0.1:5001", "https://webui.ipfs.io"]'
+    
+Allow our clients to talk to our jsipfs instance:
+
+    jsipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '["http://localhost:5002", "http://localhost:1234", "https://webui.ipfs.io"]'
     jsipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods '["PUT", "POST"]'
 
 Build your contract:

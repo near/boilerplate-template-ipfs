@@ -1,15 +1,12 @@
 import React from 'react';
 
-export function SignInPrompt({ greeting, onClick }) {
+export function SignInPrompt({ onClick }) {
   return (
     <main>
-      <h1>
-        The contract says: <span className="greeting">{greeting}</span>
-      </h1>
-      <h3>Welcome to NEAR!</h3>
+      <h1>Welcome to NEAR!</h1>
       <p>
-        Your contract is storing a greeting message in the NEAR blockchain. To change it you need to sign in using the
-        NEAR Wallet. It is very simple, just use the button below.
+        Your contract stores files in IPFS and file pointers on the NEAR blockchain. To upload files, you need to sign
+        in using the NEAR Wallet. It is very simple, just use the button below.
       </p>
       <p>
         Do not worry, this app runs in the test network ("testnet"). It works just like the main network ("mainnet"),
@@ -34,11 +31,14 @@ export function SignOutButton({ accountId, onClick }) {
 export function EducationalText() {
   return (
     <>
-      <p>Look at that! A Hello World app! This greeting is stored on the NEAR blockchain. Check it out:</p>
+      <p>
+        Look at that! A simple app that stores files! These files are stored on IPFS and a reference to them is stored
+        on the NEAR blockchain. Check it out:
+      </p>
       <ol>
         <li>
-          Look in <code>frontend/App.js</code> - you'll see <code>getGreeting</code> and <code>setGreeting</code> being
-          called on <code>contract</code>. What's this?
+          Look in <code>frontend/App.js</code> - you'll see <code>addFile</code> and <code>getFiles</code> being called
+          on <code>contract</code>. What's this?
         </li>
         <li>
           Ultimately, this <code>contract</code> code is defined in <code>./contract</code> – this is the source code
