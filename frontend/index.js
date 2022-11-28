@@ -8,7 +8,7 @@ import { FilesNEAR } from './near-interface';
 import { Wallet } from './near-wallet';
 
 // TODO why isn't the env in start.sh working correctly?
-const CONTRACT_NAME = process.env.CONTRACT_NAME || 'dev-1669067610242-37211164210545';
+const CONTRACT_NAME = process.env.CONTRACT_NAME || 'dev-1669650655396-78369756421589';
 
 // When creating the wallet you can optionally ask to create an access key
 // Having the key enables to call non-payable methods without interrupting the user to sign
