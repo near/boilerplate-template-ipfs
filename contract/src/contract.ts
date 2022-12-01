@@ -1,14 +1,6 @@
 import { NearBindgen, near, call, view, UnorderedMap } from "near-sdk-js";
+import { File } from "./types";
 
-class File {
-  cid: string;
-  name: string;
-
-  constructor({ cid, name }: File) {
-    this.cid = cid;
-    this.name = name;
-  }
-}
 @NearBindgen({})
 class FilesNear {
   files: UnorderedMap<File[]> = new UnorderedMap<File[]>("ipfs-files");
@@ -21,10 +13,6 @@ class FilesNear {
     this.files.set(sender, senders_files);
   }
 
-  // This is insecure in that anyone would be able to see which files you uploaded.
-  // Encrypting the files might be a good idea here and then limiting which files they can see.
-  // Even if you made this a @call method, someone could still index the blockchain and find the files
-  // associated to your account.
   @view({})
   get_files({
     account_id,
