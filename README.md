@@ -83,6 +83,10 @@ Install IPFS:
 Initialize IPFS daemon:
 
     jsipfs init
+
+In another terminal window, start the IPFS daemon:
+
+    jsipfs daemon
     
 Allow our clients to talk to our jsipfs instance:
 
