@@ -1,4 +1,4 @@
-# Hello NEAR Contract
+# IPFS NEAR Contract
 
 The smart contract exposes two methods to enable storing and retrieving a file references in the NEAR network.
 
@@ -34,7 +34,6 @@ class FilesNear {
 ```
 
 <br />
-
 # Quickstart
 
 1. Make sure you have installed [node.js](https://nodejs.org/en/download/package-manager/) >= 16.
