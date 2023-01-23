@@ -1,5 +1,5 @@
 ---
-name: Tests
+name: Lint and Format Check
 
 on:
   push:
@@ -8,8 +8,8 @@ on:
     - cron: "30 1 * * 0"
 
 jobs:
-  tests:
-    name: Running tests
+  linter:
+    name: Running linters
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Check out code from GitHub
