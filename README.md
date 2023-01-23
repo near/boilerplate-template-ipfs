@@ -1,9 +1,9 @@
 <h1 align="center">
-  <a href="https://github.com/near/boilerplate-template">
+  <a href="https://github.com/near/boilerplate-template-ipfs">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/near/boilerplate-template/main/docs/images/pagoda_logo_light.png">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/near/boilerplate-template/main/docs/images/pagoda_logo_dark.png">
-      <img alt="" src="https://raw.githubusercontent.com/shelegdmitriy/test-boilerplate-template-rs/main/docs/images/pagoda_logo_dark.png">
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/near/boilerplate-template-ipfs/main/docs/images/pagoda_logo_light.png">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/near/boilerplate-template-ipfs/main/docs/images/pagoda_logo_dark.png">
+      <img alt="" src="https://raw.githubusercontent.com/shelegdmitriy/boilerplate-template-ipfs/main/docs/images/pagoda_logo_dark.png">
     </picture>
   </a>
 </h1>
@@ -12,17 +12,17 @@
   Boilerplate Template React
   <br />
   <br />
-  <a href="https://github.com/near/boilerplate-template/issues/new?assignees=&labels=bug&template=01_BUG_REPORT.md&title=bug%3A+">Report a Bug</a>
+  <a href="https://github.com/near/boilerplate-template-ipfs/issues/new?assignees=&labels=bug&template=01_BUG_REPORT.md&title=bug%3A+">Report a Bug</a>
   ·
-  <a href="https://github.com/near/boilerplate-template/issues/new?assignees=&labels=enhancement&template=02_FEATURE_REQUEST.md&title=feat%3A+">Request a Feature</a>
+  <a href="https://github.com/near/boilerplate-template-ipfs/issues/new?assignees=&labels=enhancement&template=02_FEATURE_REQUEST.md&title=feat%3A+">Request a Feature</a>
   .
-  <a href="https://github.com/near/boilerplate-template/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+">Ask a Question</a>
+  <a href="https://github.com/near/boilerplate-template-ipfs/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+">Ask a Question</a>
 </div>
 
 <div align="center">
 <br />
 
-[![Pull Requests welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](https://github.com/near/boilerplate-template/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
+[![Pull Requests welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](https://github.com/near/boilerplate-template-ipfs/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
 [![code with love by near](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by-near-ff1414.svg?style=flat-square)](https://github.com/near)
 
 </div>
@@ -45,7 +45,7 @@
   - [Support](#support)
   - [Project assistance](#project-assistance)
   - [Contributing](#contributing)
-  - [Authors & contributors](#authors--contributors)
+  - [Authors \& contributors](#authors--contributors)
   - [Security](#security)
 
 </details>
@@ -65,7 +65,7 @@ Getting Started
 
 ### Prerequisites
 
-Make sure you have a [current version of Node.js](https://nodejs.org/en/about/releases/) installed – we are targeting versions `16+`.
+Make sure you have a [current version of Node.js](https://nodejs.org/en/about/releases/) installed – we are targeting versions `18+`.
 
 Read about other [prerequisites](https://docs.near.org/develop/prerequisites) in our docs.
 
@@ -90,7 +90,7 @@ In another terminal window, start the IPFS daemon:
     
 Allow our clients to talk to our jsipfs instance:
 
-    jsipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '["http://localhost:5002", "http://localhost:1234", "https://webui.ipfs.io"]'
+    jsipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '["http://localhost:5002", "http://localhost:3000", "https://webui.ipfs.io"]'
     jsipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods '["PUT", "POST"]'
 
 Build your contract:
@@ -113,7 +113,11 @@ Start your IPFS daemon:
 
     jsipfs daemon
 
-Start your frontend:
+Run your frontend in development mode:
+
+    npm run dev
+
+Start your frontend in production mode:
 
     npm start
 
@@ -122,10 +126,9 @@ Exploring The Code
 
 1. The smart-contract code lives in the `/contract` folder. See the README there for
    more info. In blockchain apps the smart contract is the "backend" of your app.
-2. The frontend code lives in the `/frontend` folder. `/frontend/index.html` is a great
-   place to start exploring. Note that it loads in `/frontend/index.js`,
+2. The frontend code lives in the `/frontend` folder. `/frontend/pages/index.tsx` is a great
+   place to start exploring. Note that it uses `/frontend/contracts/ipfs-contract.ts`,
    this is your entrypoint to learn how the frontend connects to the NEAR blockchain.
-3. Test your contract: `npm test`, this will run the tests in `integration-tests` directory.
 
 
 Deploy
@@ -173,10 +176,9 @@ Replace `PATH_TO_WASM_FILE` with the `wasm` that was generated in `contract` bui
 Step 3: set contract name in your frontend code
 -----------------------------------------------
 
-Modify the line in `frontend/index.js` that sets the account name of the contract. Set it to the account id you used above.
+Modify `NEXT_PUBLIC_CONTRACT_NAME` in `frontend/.env.local` that sets the account name of the contract. Set it to the account id you used above.
 
-    const CONTRACT_NAME = 'near-blank-project.YOUR-NAME.testnet';
-
+    NEXT_PUBLIC_CONTRACT_NAME=near-blank-project.YOUR-NAME.testnet
 
 
 Troubleshooting
@@ -195,23 +197,23 @@ On Windows, if you're seeing an error containing `EPERM` it may be related to sp
 
 ## Roadmap
 
-See the [open issues](https://github.com/near/boilerplate-template/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/near/boilerplate-template-ipfs/issues) for a list of proposed features (and known issues).
 
-- [Top Feature Requests](https://github.com/near/boilerplate-template/issues?q=label%3Aenhancement+is%3Aopen+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
-- [Top Bugs](https://github.com/near/boilerplate-template/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
-- [Newest Bugs](https://github.com/near/boilerplate-template/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
+- [Top Feature Requests](https://github.com/near/boilerplate-template-ipfs/issues?q=label%3Aenhancement+is%3Aopen+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
+- [Top Bugs](https://github.com/near/boilerplate-template-ipfs/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
+- [Newest Bugs](https://github.com/near/boilerplate-template-ipfs/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
 
 ## Support
 
 Reach out to the maintainer:
 
-- [GitHub issues](https://github.com/near/boilerplate-template/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+)
+- [GitHub issues](https://github.com/near/boilerplate-template-ipfs/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+)
 
 ## Project assistance
 
 If you want to say **thank you** or/and support active development of Boilerplate Template React:
 
-- Add a [GitHub Star](https://github.com/near/boilerplate-template) to the project.
+- Add a [GitHub Star](https://github.com/near/boilerplate-template-ipfs) to the project.
 - Tweet about the Boilerplate Template React.
 - Write interesting articles about the project on [Dev.to](https://dev.to/), [Medium](https://medium.com/) or your personal blog.
 
@@ -226,9 +228,9 @@ Please read [our contribution guidelines](docs/CONTRIBUTING.md), and thank you f
 
 ## Authors & contributors
 
-The original setup of this repository is by [Dmitriy Sheleg](https://github.com/shelegdmitriy).
+The original setup of this repository is by [Jonathan Lewis](https://github.com/jon-lewis).
 
-For a full list of all authors and contributors, see [the contributors page](https://github.com/near/boilerplate-template/contributors).
+For a full list of all authors and contributors, see [the contributors page](https://github.com/near/boilerplate-template-ipfs/contributors).
 
 ## Security
 
