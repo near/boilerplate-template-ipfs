@@ -101,7 +101,7 @@ Deploy your contract to TestNet with a temporary dev account:
 Usage
 =====
 
-Test your contract:
+Test your contract (must use node v16):
 
     npm test
 

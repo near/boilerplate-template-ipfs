@@ -1,0 +1,28 @@
+---
+name: Tests
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "30 1 * * 0"
+
+jobs:
+  tests:
+    name: Running tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16.x"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build wasm
+        run: npm run build:contract
+
+      - name: Run unit and integration tests
+        run: npm run test
