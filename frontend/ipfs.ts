@@ -1,9 +1,13 @@
 import { create } from 'ipfs-client';
 
-export function useIpfs() {
+export function useIpfs(): any {
+  if (!process.env.NEXT_PUBLIC_IPFS_GRPC_ADDRESS || !process.env.NEXT_PUBLIC_IPFS_HTTP_ADDRESS) {
+    return null;
+  }
+
   const ipfs = create({
-    grpc: '/ip4/127.0.0.1/tcp/5003/ws',
-    http: '/ip4/127.0.0.1/tcp/5002/http',
+    grpc: process.env.NEXT_PUBLIC_IPFS_GRPC_ADDRESS,
+    http: process.env.NEXT_PUBLIC_IPFS_HTTP_ADDRESS,
   });
   return ipfs;
 }

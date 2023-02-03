@@ -9,6 +9,7 @@ import { useIpfs } from '../ipfs';
 export default function Home() {
   const { selector, accountId } = useWalletSelector();
   const [files, setFiles] = useState<File[]>([]);
+  const ipfs = useIpfs();
 
   useEffect(() => {
     if (!accountId) {
@@ -40,7 +41,8 @@ export default function Home() {
       </h1>
       <div className="mb-8 mx-2 columns-1 md:columns-2 lg:columns-3">
         {files.length > 0 && <ViewFiles files={files} />}
-        <UploadFile onUpload={onFileSave} />
+        {!ipfs && <SetupGateway />}
+        {ipfs && <UploadFile onUpload={onFileSave} ipfs={ipfs} />}
         <EducationalText />
         <ExplainText />
       </div>
@@ -72,9 +74,21 @@ function ViewFiles({ files }: { files: File[] }) {
   );
 }
 
-function UploadFile({ onUpload }: { onUpload: (file: File) => {} }) {
+function SetupGateway() {
+  return (
+    <div className="mx-auto mb-8 p-4 max-w-sm rounded overflow-hidden bg-slate-700">
+      <p className="block text-lg font-bold text-gray-200">Upload File</p>
+      <div>
+        <p className="text-gray-200">
+          Please setup an IPFS gateway to upload files. Instructions on setting up locally are in the readme.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function UploadFile({ onUpload, ipfs }: { onUpload: (file: File) => {}; ipfs: any }) {
   const { selector, accountId } = useWalletSelector();
-  const ipfs = useIpfs();
   const [uploadingFile, setUploadingFile] = useState(false);
   const [error, setError] = useState<any>(null);
 
